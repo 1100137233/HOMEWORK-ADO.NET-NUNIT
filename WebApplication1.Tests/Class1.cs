@@ -18,19 +18,19 @@ namespace WebApplication1.Tests
         [TestFixtureSetUp]
         public void Initial()
         {
-            string sql = @"INSERT INTO [dbo].[circle]([Students],[name],[addr],[gender])
+            string sql = @"INSERT INTO Students([Name],[Addr],[Gender])
                              VALUES
                                (@Name
-                               ,@addr,
-                                @gender);";
-            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ADODBConnectionString"].ConnectionString))
+                               ,@Addr,
+                                @Gender);";
+            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 cn.Open();
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
                     cmd.CommandText = sql;
                     cmd.Parameters.Add(new SqlParameter("@Name", "123"));
-                    cmd.Parameters.Add(new SqlParameter("@addr", "彰化"));
+                    cmd.Parameters.Add(new SqlParameter("@Addr", "彰化"));
 
                     ID = cmd.ExecuteScalar().ToString();
 
@@ -42,7 +42,7 @@ namespace WebApplication1.Tests
         [Test]
         public void TestAdd()
         {
-            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ADODBConnectionString"].ConnectionString))
+            using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 cn.Open();
                 using (SqlCommand cmd = cn.CreateCommand())
