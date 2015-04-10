@@ -48,7 +48,7 @@ namespace WebApplication1
             {
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
-                    cmd.CommandText = "select * from employees";
+                    cmd.CommandText = "select * from Studnets";
                     cmd.Parameters.Add(new SqlParameter("@name", "%" + txtSearch.Text + "%"));
 
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
@@ -114,7 +114,7 @@ namespace WebApplication1
             {
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
-                    cmd.CommandText = "select * from Studnets";
+                    cmd.CommandText = "select * from Students";
 
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                     {

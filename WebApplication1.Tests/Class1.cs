@@ -29,7 +29,7 @@ namespace WebApplication1.Tests
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
                     cmd.CommandText = sql;
-                    cmd.Parameters.Add(new SqlParameter("@Name", "123"));
+                    cmd.Parameters.Add(new SqlParameter("@Name", "chen"));
                     cmd.Parameters.Add(new SqlParameter("@Addr", "彰化"));
 
                     ID = cmd.ExecuteScalar().ToString();

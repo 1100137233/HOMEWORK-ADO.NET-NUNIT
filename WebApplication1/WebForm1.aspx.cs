@@ -27,10 +27,11 @@ namespace WebApplication1
                 cn.Open();
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
-                    cmd.CommandText = "select * from circle.dbo.Students where Name like @Name";
+                    cmd.CommandText = "select * from Students where Name like @Name";
                     cmd.Parameters.Add(new SqlParameter("@Name", "%" + txtSearch.Text + "%"));
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
+                        //testcommit
                         while ((dr.Read()))
                         {
                             lbResult.Items.Add(dr.GetSqlInt32(0).ToString() + "\t" + dr.GetSqlString(1).ToString());
