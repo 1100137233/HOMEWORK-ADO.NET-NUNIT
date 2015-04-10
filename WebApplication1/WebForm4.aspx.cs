@@ -78,8 +78,9 @@ namespace WebApplication1
         /// <param name="e"></param>
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            string sql = @"update [Students] set [Name] = @Name, [addr] = @addr ,[gender] = @gender,
-                             where sID = @txtE_Id.Text";
+            string sql = @"UPDATE Students set [Name]=@Name,[addr]= @addr,[gender]=@gender where [sID] =txtE_Id.Text ";
+            /*string sql = @"update [Students] set [Name] = @Name, [addr] = @addr ,[gender] = @gender,
+                             where sID = @sID";*/
             using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 cn.Open();
