@@ -18,11 +18,11 @@ namespace WebApplication1.Tests
         [TestFixtureSetUp]
         public void Initial()
         {
-            string sql = @"INSERT INTO Students([Name],[Addr],[Gender])
+            string sql = @"INSERT INTO Students([Name],[addr],[gender])
                              VALUES
                                (@Name
-                               ,@Addr,
-                                @Gender);";
+                               ,@addr,
+                                @gender);";
             using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 cn.Open();
@@ -30,7 +30,9 @@ namespace WebApplication1.Tests
                 {
                     cmd.CommandText = sql;
                     cmd.Parameters.Add(new SqlParameter("@Name", "chen"));
-                    cmd.Parameters.Add(new SqlParameter("@Addr", "彰化"));
+                    cmd.Parameters.Add(new SqlParameter("@addr", "彰化"));
+                    cmd.Parameters.Add(new SqlParameter("@gender", "女"));
+                    
 
                     ID = cmd.ExecuteScalar().ToString();
 
