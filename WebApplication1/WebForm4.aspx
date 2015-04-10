@@ -28,7 +28,7 @@
         
         Name:<asp:TextBox ID="txtName" runat="server"></asp:TextBox>
         Addr:<asp:TextBox ID="txtAddr" runat="server"></asp:TextBox>
-        gender:<asp:TextBox ID="txtGen" runat="server"></asp:TextBox>
+        Gender:<asp:TextBox ID="txtGen" runat="server"></asp:TextBox>
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="新增(ExecuteScalar)" />
 
 
@@ -37,7 +37,7 @@
         Id:<asp:TextBox ID="txtE_Id" runat="server"></asp:TextBox>
         Name:<asp:TextBox ID="txtE_Name" runat="server"></asp:TextBox>
         Addr:<asp:TextBox ID="txtE_Addr" runat="server"></asp:TextBox>
-        gender:<asp:TextBox ID="txtE_Gen" runat="server"></asp:TextBox>
+        Gender:<asp:TextBox ID="txtE_Gen" runat="server"></asp:TextBox>
         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="修改(ExecuteNonQuery)" />
 
 

@@ -32,7 +32,7 @@ namespace WebApplication1
                 cn.Open();
                 using (SqlCommand cmd = cn.CreateCommand())
                 {
-                    cmd.CommandText = "select * from circle.dbo.Students where Name like @Name";
+                    cmd.CommandText = "select * from Students where Name like @Name";
                     cmd.Parameters.Add(new SqlParameter("@Name", "%" + txtSearch.Text + "%"));
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
@@ -49,11 +49,12 @@ namespace WebApplication1
         //ExecuteScalar
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            string sql = @"INSERT INTO Studnets(Name,addr,gender)
+            string sql = @"insert into Students (Name,addr,gender) values(@Name,@addr,@gender);SELECT CAST(scope_identity() AS int);";
+           /* string sql = @"INSERT INTO Studnets(Name,addr,gender)
                              VALUES
                                (@Name
                                ,@addr,
-                                @gender);SELECT CAST(scope_identity() AS int);";
+                                @gender);SELECT CAST(scope_identity() AS int);";*/
             using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 cn.Open();
@@ -64,7 +65,7 @@ namespace WebApplication1
                     cmd.Parameters.Add(new SqlParameter("@addr", txtAddr.Text));
                     cmd.Parameters.Add(new SqlParameter("@gender", txtGen.Text));
 
-                    //txtE_Id.Text = cmd.ExecuteScalar().ToString();
+                    txtE_Id.Text = cmd.ExecuteScalar().ToString();
                 }
                 btnSearch_Click(null, null);
             }
@@ -78,7 +79,7 @@ namespace WebApplication1
         protected void btnEdit_Click(object sender, EventArgs e)
         {
             string sql = @"update [Students] set [Name] = @Name, [addr] = @addr ,[gender] = @gender,
-                             where sID = @sID";
+                             where sID = @txtE_Id.Text";
             using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 cn.Open();
@@ -90,7 +91,8 @@ namespace WebApplication1
                     cmd.Parameters.Add(new SqlParameter("@addr", txtE_Addr.Text));
                     cmd.Parameters.Add(new SqlParameter("@gender", txtE_Gen.Text));
 
-                    cmd.ExecuteNonQuery();
+                   cmd.ExecuteNonQuery();
+                    
                 }
                 btnSearch_Click(null, null);
             }

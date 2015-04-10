@@ -18,7 +18,7 @@ namespace WebApplication1.Tests
         [TestFixtureSetUp]
         public void Initial()
         {
-            string sql = @"INSERT INTO Students([Name],[addr],[gender])
+            string sql = @"INSERT INTO Students(Name,addr,gender)
                              VALUES
                                (@Name
                                ,@addr,
